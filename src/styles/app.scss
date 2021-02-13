@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+h1,
+h2,
+h3 {
+    color: rgb(230, 230, 230);
+}
+body {
+    font-family: "Lato", sans-serif;
+    background-color: #1e1d27;
+}
+h3,
+h4 {
+    font-weight: 400;
+    color: rgb(172, 172, 172);
+}
+.App {
+    transition: all 0.5s ease;
+}
+.library-active {
+    margin-left: 30%;
+}
+
+@import "./audioplayer";
+@import "./song";
+@import "./library";
+@import "./nav";
