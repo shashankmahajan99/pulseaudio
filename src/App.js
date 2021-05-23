@@ -5,6 +5,7 @@ import Song from "./components/Song";
 import data from "./data";
 import Library from "./components/Library";
 import Nav from "./components/Nav";
+import { playAudio } from "./util";
 const App = () => {
   const [songs, setSongs] = useState(data());
   const [currentSong, setCurrentSong] = useState(songs[0]);
@@ -34,11 +35,23 @@ const App = () => {
       animationPercentage,
     });
   };
+  const activeLibraryHandler = (nextPrev) => {
+    const newSongs = songs.map((song) => {
+      if (song.id === nextPrev.id) {
+        return { ...song, active: true };
+      } else {
+        return { ...song, active: false };
+      }
+    });
+    setSongs(newSongs);
+  };
 
   const songEndHandler = async () => {
     let currIndex = songs.findIndex((song) => song.id === currentSong.id);
     await setCurrentSong(songs[(currIndex + 1) % songs.length]);
-    if (isPlaying) audioRef.current.play();
+    activeLibraryHandler(songs[(currIndex + 1) % songs.length]);
+    playAudio(isPlaying, audioRef);
+    return;
   };
 
   return (

@@ -97,7 +97,8 @@ const AudioPlayer = ({
         <p>{getTime(songInfo.currTime)}</p>
         <div
           style={{
-            background: "linear-gradient(to right,#EB727E,#48465E)",
+            // background: "linear-gradient(to right,#EB727E,#48465E)",
+            background: `linear-gradient(to right,${currentSong.color[0]},${currentSong.color[1]})`,
           }}
           className="track"
         >
